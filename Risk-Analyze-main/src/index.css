@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-bg: #050505;
+  --color-card-bg: rgba(20, 20, 25, 0.8);
+  --color-accent-blue: #00d1ff;
+  --color-accent-purple: #bf00ff;
+  --color-text-main: #ffffff;
+  --color-text-dim: #a0a0a5;
+  --color-risk-high: #ff3d00;
+  --color-risk-med: #ffd600;
+  --color-risk-low: #00e676;
+  --color-border: rgba(255, 255, 255, 0.1);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-bg text-text-main antialiased selection:bg-accent-blue/30 selection:text-white;
+  font-family: var(--font-sans);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-white/20;
+}
+
+/* Theme Specific Classes */
+.glass-card {
+  @apply bg-card-bg backdrop-blur-[10px] border border-border rounded-xl;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-accent-blue to-accent-purple;
+}
+
+.btn-artistic {
+  @apply bg-gradient-to-br from-accent-blue to-accent-purple text-white font-semibold py-3 px-6 rounded-lg transition-all active:scale-95 hover:opacity-90;
+}
+
+.nav-group-label {
+  @apply text-[10px] uppercase tracking-widest text-text-dim mb-3;
+}
+
+.nav-item-artistic {
+  @apply flex items-center gap-2.5 py-2 text-[13px] text-text-dim cursor-pointer transition-colors hover:text-text-main;
+}
+
+.nav-item-artistic.active {
+  @apply text-text-main font-semibold;
+}
+
+.workspace-gradient {
+  background: radial-gradient(circle at top right, #1a1a2e 0%, #050505 60%);
+}
+
+.drop-zone-artistic {
+  @apply relative overflow-hidden border border-dashed border-accent-blue/30 bg-white/[0.02] rounded-2xl flex flex-col items-center justify-center;
+}
+
+.drop-zone-artistic::before {
+  content: '';
+  @apply absolute w-[150px] h-[150px] bg-accent-blue blur-[80px] opacity-10 pointer-events-none;
+}
+
+.recommendation-card-artistic {
+  @apply bg-risk-med/5 border-l-4 border-risk-med p-3 rounded-r-lg;
+}
